@@ -3,14 +3,14 @@
 #include <assert.h>
 #include <time.h>
 
-#include "global.h"
-#include "RootObject.h"
-#include "Model.h"
-#include "Image.h"
-#include "Camera.h"
-#include "Input.h"
-#include "Audio.h"
-#include "VFX.h"
+#include "Engine/global.h"
+#include "Engine/RootObject.h"
+#include "Engine/Model.h"
+#include "Engine/Image.h"
+#include "Engine/Camera.h"
+#include "Engine/Input.h"
+#include "Engine/Audio.h"
+#include "Engine/VFX.h"
 
 #pragma comment(lib,"Winmm.lib")
 
@@ -31,13 +31,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//#endif
 
 	srand((unsigned)time(NULL));
-	SetCurrentDirectory("Assets");
+	SetCurrentDirectory(L"Assets");
 
 	//初期化ファイル（setup.ini）から必要な情報を取得
-	int screenWidth = GetPrivateProfileInt("SCREEN", "Width", 800, ".\\setup.ini");		//スクリーンの幅
-	int screenHeight = GetPrivateProfileInt("SCREEN", "Height", 600, ".\\setup.ini");	//スクリーンの高さ
-	int fpsLimit = GetPrivateProfileInt("GAME", "Fps", 60, ".\\setup.ini");				//FPS（画面更新速度）
-	int isDrawFps = GetPrivateProfileInt("DEBUG", "ViewFps", 0, ".\\setup.ini");		//キャプションに現在のFPSを表示するかどうか
+	int screenWidth = GetPrivateProfileInt(L"SCREEN", L"Width", 800, L".\\setup.ini");		//スクリーンの幅
+	int screenHeight = GetPrivateProfileInt(L"SCREEN", L"Height", 600, L".\\setup.ini");	//スクリーンの高さ
+	int fpsLimit = GetPrivateProfileInt(L"GAME", L"Fps", 60, L".\\setup.ini");				//FPS（画面更新速度）
+	int isDrawFps = GetPrivateProfileInt(L"DEBUG", L"ViewFps", 0, L".\\setup.ini");		//キャプションに現在のFPSを表示するかどうか
 
 
 
@@ -94,7 +94,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				{
 					//FPSの値を表示
 					char string[16];
-					wsprintf(string, "FPS:%d", FPS);
+					wsprintf(string, L"FPS:%d", FPS);
 					SetWindowText(GetActiveWindow(), string);
 					FPS = 0;
 					lastFpsResetTime = nowTime;
@@ -189,7 +189,7 @@ HWND InitApp(HINSTANCE hInstance, int screenWidth, int screenHeight, int nCmdSho
 
 	//タイトルバーに表示する内容
 	char caption[64];
-	GetPrivateProfileString("SCREEN", "Caption", "***", caption, 64, ".\\setup.ini");
+	GetPrivateProfileString(L"SCREEN", L"Caption", L"***", caption, 64, L".\\setup.ini");
 
 	//ウィンドウを作成
 	HWND hWnd = CreateWindow(

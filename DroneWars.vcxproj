@@ -129,13 +129,58 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DroneWars.h" />
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Engine\Audio.h" />
+    <ClInclude Include="Engine\BillBoard.h" />
+    <ClInclude Include="Engine\BoxCollider.h" />
+    <ClInclude Include="Engine\Camera.h" />
+    <ClInclude Include="Engine\Collider.h" />
+    <ClInclude Include="Engine\CsvReader.h" />
+    <ClInclude Include="Engine\Debug.h" />
+    <ClInclude Include="Engine\Direct3D.h" />
+    <ClInclude Include="Engine\Fbx.h" />
+    <ClInclude Include="Engine\FbxParts.h" />
+    <ClInclude Include="Engine\GameObject.h" />
+    <ClInclude Include="Engine\Global.h" />
+    <ClInclude Include="Engine\Image.h" />
+    <ClInclude Include="Engine\Input.h" />
+    <ClInclude Include="Engine\Model.h" />
+    <ClInclude Include="Engine\RootObject.h" />
+    <ClInclude Include="Engine\SceneManager.h" />
+    <ClInclude Include="Engine\SphereCollider.h" />
+    <ClInclude Include="Engine\Sprite.h" />
+    <ClInclude Include="Engine\Text.h" />
+    <ClInclude Include="Engine\Texture.h" />
+    <ClInclude Include="Engine\Transform.h" />
+    <ClInclude Include="Source\PlayScene.h" />
+    <ClInclude Include="Source\ResultScene.h" />
+    <ClInclude Include="Source\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DroneWars.cpp" />
+    <ClCompile Include="Engine\Audio.cpp" />
+    <ClCompile Include="Engine\BillBoard.cpp" />
+    <ClCompile Include="Engine\BoxCollider.cpp" />
+    <ClCompile Include="Engine\Camera.cpp" />
+    <ClCompile Include="Engine\Collider.cpp" />
+    <ClCompile Include="Engine\CsvReader.cpp" />
+    <ClCompile Include="Engine\Debug.cpp" />
+    <ClCompile Include="Engine\Direct3D.cpp" />
+    <ClCompile Include="Engine\Fbx.cpp" />
+    <ClCompile Include="Engine\FbxParts.cpp" />
+    <ClCompile Include="Engine\GameObject.cpp" />
+    <ClCompile Include="Engine\Image.cpp" />
+    <ClCompile Include="Engine\Input.cpp" />
+    <ClCompile Include="Engine\Model.cpp" />
+    <ClCompile Include="Engine\RootObject.cpp" />
+    <ClCompile Include="Engine\SceneManager.cpp" />
+    <ClCompile Include="Engine\SphereCollider.cpp" />
+    <ClCompile Include="Engine\Sprite.cpp" />
+    <ClCompile Include="Engine\Text.cpp" />
+    <ClCompile Include="Engine\Texture.cpp" />
+    <ClCompile Include="Engine\Transform.cpp" />
+    <ClCompile Include="Source\PlayScene.cpp" />
+    <ClCompile Include="Source\ResultScene.cpp" />
+    <ClCompile Include="Source\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DroneWars.rc" />
@@ -144,7 +189,23 @@
     <Image Include="DroneWars.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Assets\Shader\BillBoard.hlsl" />
+    <FxCompile Include="Assets\Shader\Debug3D.hlsl" />
+    <FxCompile Include="Assets\Shader\Simple2D.hlsl" />
+    <FxCompile Include="Assets\Shader\Simple3D.hlsl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\directxtex_desktop_win10.2025.10.28.1\build\native\directxtex_desktop_win10.targets" Condition="Exists('packages\directxtex_desktop_win10.2025.10.28.1\build\native\directxtex_desktop_win10.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\directxtex_desktop_win10.2025.10.28.1\build\native\directxtex_desktop_win10.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtex_desktop_win10.2025.10.28.1\build\native\directxtex_desktop_win10.targets'))" />
+  </Target>
 </Project>

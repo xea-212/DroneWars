@@ -32,8 +32,8 @@ HRESULT Texture::Load(std::string fileName)
 	if(FAILED(hr))
 	{
 		char message[256];
-		wsprintf(message, "「%s」が見つかりまん", fileName.c_str());
-		MessageBox(0, message, "画像ファイルの読み込みに失敗", MB_OK);
+		wsprintf(message, L"「%s」が見つかりまん", fileName.c_str());
+		MessageBox(0, message,L"画像ファイルの読み込みに失敗", MB_OK);
 		return hr;
 	}
 	pDecoder->GetFrame(0, &pFrame);
