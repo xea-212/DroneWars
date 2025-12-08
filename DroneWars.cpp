@@ -15,7 +15,7 @@
 #pragma comment(lib,"Winmm.lib")
 
 //定数宣言
-const char* WIN_CLASS_NAME = "SampleGame";	//ウィンドウクラス名
+const wchar_t* WIN_CLASS_NAME = L"SampleGame";	//ウィンドウクラス名
 
 
 //プロトタイプ宣言
@@ -93,7 +93,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				if (nowTime - lastFpsResetTime > 1000)
 				{
 					//FPSの値を表示
-					char string[16];
+					wchar_t string[16];
 					wsprintf(string, L"FPS:%d", FPS);
 					SetWindowText(GetActiveWindow(), string);
 					FPS = 0;
@@ -188,7 +188,7 @@ HWND InitApp(HINSTANCE hInstance, int screenWidth, int screenHeight, int nCmdSho
 	AdjustWindowRect(&winRect, WS_OVERLAPPEDWINDOW, FALSE);
 
 	//タイトルバーに表示する内容
-	char caption[64];
+	wchar_t caption[64];
 	GetPrivateProfileString(L"SCREEN", L"Caption", L"***", caption, 64, L".\\setup.ini");
 
 	//ウィンドウを作成
